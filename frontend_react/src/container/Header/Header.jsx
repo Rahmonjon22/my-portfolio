@@ -9,9 +9,9 @@ const scaleVariants = {
     scale: [0, 1],
     opacity: [0, 1],
     transition: {
-      duration: 1, ease: 'easeInOut'
+      duration: 1,
+      ease: 'easeInOut'
     }
-
   }
 }
 
@@ -46,20 +46,20 @@ const Header = () => {
         className="app__header-img"
       >
         <img src={images.profile} alt="profile_bg" />
-        <motion.img
+        <motion.img classname="overlay_circle"
           whileInView={{ opacity: [0, 1] }}
           transition={{ duration: 1, ease: 'easeInOut' }}
           className="app__header-img"
           src={images.circle}
           alt="profile_circle"
-          classname="overlay_circle"
+         
         />
       </motion.div>
 
       <motion.div
       variants={scaleVariants}
       whileInView={scaleVariants.whileInView}
-      className="app__header-cirlce"
+      className="app__header-cirlces"
       >
         {[images.flutter, images.redux, images.sass].map((circle, index ) =>(
           <div className="circle-cmp app__flex" key={`circle-${index}`}>
