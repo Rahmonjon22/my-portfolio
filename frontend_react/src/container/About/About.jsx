@@ -1,16 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import "./about.scss";
-import { images } from '../../constants';
+// import { images } from '../../constants';
+import { client, urlFor } from "../../client";
+// const abouts = [
+//   {title: 'Web Development', description: 'I am good Developer', imageUrl: images.about01},
+//   {title: 'Web Design', description: 'I am good Developer', imageUrl: images.about02},
+//   {title: 'UI/UX', description: 'I am good Developer', imageUrl: images.about03},
+//   {title: 'Web Animation', description: 'I am good Developer', imageUrl: images.about04}
+// ]
+// the above is static data and now client is coming from real data
 
-const abouts = [
-  {title: 'Web Development', description: 'I am good Developer', imageUrl: images.about01},
-  {title: 'Web Design', description: 'I am good Developer', imageUrl: images.about02},
-  {title: 'UI/UX', description: 'I am good Developer', imageUrl: images.about03},
-  {title: 'Web Animation', description: 'I am good Developer', imageUrl: images.about04}
-
-]
 const About = () => {
+  const [abouts, setAbouts] = useState([]);
+useEffect(()=>{
+  const query = '*[_type == "abouts"]';
+  client.fetch(query)
+  .then((data) => {
+    setAbouts(data);
+  })
+}, []);
+
   return (
     <>
       <h2 className="head-text">
@@ -25,7 +35,7 @@ const About = () => {
           className="app__profile-item"
           key={about.title + index}
           >
-            <img src={about.imageUrl} alt={about.title} />
+            <img src={urlFor(about.imgUrl)} alt={about.title} />
             <h2 className="bold-text" style={{ marginTop: 20 }}>{about.title}</h2>
             <p className="p-text" style={{ marginTop: 10 }}>{about.description}</p>
 
