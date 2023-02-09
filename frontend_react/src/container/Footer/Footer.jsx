@@ -1,12 +1,110 @@
-import React from 'react';
+import React, { useState } from "react";
 
-import './footer.scss';
-
+// import Socialmedia from '../../components/Socialmedia';
+import { images } from "../../constants";
+import { AppWrap, MotionWrap } from "../../wrapper";
+import { client } from "../../client";
+import "./footer.scss";
 
 const Footer = () => {
-  return (
-    <div>Footer</div>
-  )
-}
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-export default Footer
+  const { username, email, message } = formData;
+
+  const handleChangeInput = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = () => {
+    setLoading(true);
+
+    const contact = {
+      _type: "contact",
+      name: username,
+      email: email,
+      message: message,
+    };
+
+    client
+      .create(contact)
+      .then(() => {
+        setLoading(false);
+        setIsFormSubmitted(true);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  return (
+    <>
+      <h2 className="head-text">Take a coffe & chat with me</h2>
+
+      <div className="app__footer-cards">
+        <div className="app__footer-card">
+          <img src={images.email} alt="email" />
+          <a href="mailto:rahmonjon2@yahoo.com" className="p-text">
+            rahmonjon2@yahoo.com
+          </a>
+        </div>
+        <div className="app__footer-card">
+          <img src={images.mobile} alt="mobile" />
+          <a href="tel: +49 (178) 50851-14" className="p-text">
+            +49 (178) 50851-14
+          </a>
+        </div>
+      </div>
+      {!isFormSubmitted ? (
+        <div className="app__footer-form app__flex">
+          <div className="app__flex">
+            <input
+              type="text"
+              className="p-text"
+              placeholder="Your Name"
+              name="name"
+              value={username}
+              onChange={handleChangeInput}
+            />
+          </div>
+          <div className="app__flex">
+            <input
+              type="email"
+              className="p-text"
+              placeholder="Your Email"
+              name="email"
+              value={email}
+              onChange={handleChangeInput}
+            />
+          </div>
+          <div>
+            <textarea
+              className="p-text"
+              placeholder="Your Message"
+              value={message}
+              name="message"
+              onChange={handleChangeInput}
+            />
+          </div>
+          <button type="button" className="p-text" onClick={handleSubmit}>
+            {!loading ? "Send Message" : "Sending..."}
+          </button>
+        </div>
+      ) : (
+        <div>
+          <h3 className="head-text">Thank you for getting in touch </h3>
+        </div>
+      )}
+    </>
+  );
+};
+
+export default AppWrap(
+  MotionWrap(Footer, "app__footer"),
+  "contact",
+  "app__whitebg"
+);

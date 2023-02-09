@@ -47,6 +47,8 @@ const Skills = () => {
           ))}
         </motion.div>
         <div className="app__skills-exp">
+          {/* TODO need to check here 
+          Warning: Each child in a list should have a unique "key" prop.*/}
           {experiences.map((experience) => (
             <motion.div
               className="app__skills-exp-item"
