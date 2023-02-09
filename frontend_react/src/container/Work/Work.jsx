@@ -18,7 +18,7 @@ const Work = () => {
       setWorks(data);
       setFilterWork(data);
     });
-  }, []);          
+  }, []);
   const handleWorkFilter = (item) => {
     setActiveFilter(item);
     setAnimateCard([{ y: 100, opacity: 0 }]);
@@ -76,21 +76,21 @@ const Work = () => {
                 <a href={work.projectLink} target="_blank" rel="noreferrer">
                   <motion.div
                     whileInView={{ scale: [0, 1] }}
-                    whileHover={{ opacity: [0, 1] }}
+                    whileHover={{ scale: [1, 0.9] }}
                     transition={{ duration: 0.25 }}
                     className="app__flex"
                   >
-                    {<AiFillEye />}
+                    <AiFillEye />
                   </motion.div>
                 </a>
                 <a href={work.codeLink} target="_blank" rel="noreferrer">
                   <motion.div
                     whileInView={{ scale: [0, 1] }}
-                    whileHover={{ opacity: [0, 1] }}
+                    whileHover={{ scale: [1, 0.9] }}
                     transition={{ duration: 0.25 }}
                     className="app__flex"
                   >
-                    {<AiFillGithub />}
+                    <AiFillGithub />
                   </motion.div>
                 </a>
               </motion.div>
@@ -113,5 +113,8 @@ const Work = () => {
 };
 
 // export default AppWrap(Work, "work");
-export default AppWrap(MotionWrap(Work,'app__works'), 'work', "app__primarybg");
-
+export default AppWrap(
+  MotionWrap(Work, "app__works"),
+  "work",
+  "app__primarybg"
+);

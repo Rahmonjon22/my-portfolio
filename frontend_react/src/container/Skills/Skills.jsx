@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Tooltip as ReactTooltip } from "react-tooltip";
+
 import { AppWrap, MotionWrap } from "../../wrapper";
 import { urlFor, client } from "../../client";
-
 import "./skills.scss";
 
 const Skills = () => {
@@ -47,8 +47,6 @@ const Skills = () => {
           ))}
         </motion.div>
         <div className="app__skills-exp">
-          {/* TODO need to check here 
-          Warning: Each child in a list should have a unique "key" prop.*/}
           {experiences.map((experience) => (
             <motion.div
               className="app__skills-exp-item"
@@ -91,6 +89,8 @@ const Skills = () => {
 };
 
 
-// export default AppWrap(Skills, "skills");
-export default AppWrap(MotionWrap(Skills,'app__skills'), 'skills', "app__whitebg");
-
+export default AppWrap(
+  MotionWrap(Skills, 'app__skills'),
+  'skills',
+  'app__whitebg',
+);
