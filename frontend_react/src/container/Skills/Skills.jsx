@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Tooltip as ReactTooltip } from "react-tooltip";
+import { Tooltip as ReactTooltip } from 'react-tooltip'; // works but not rendering
+// import * as ReactTooltip from 'react-tooltip'; 
+// import ReactTooltip from 'react-tooltip';
 
 import { AppWrap, MotionWrap } from "../../wrapper";
 import { urlFor, client } from "../../client";
 import "./skills.scss";
+
 
 const Skills = () => {
   const [experiences, setExperiences] = useState([]);
@@ -87,7 +90,6 @@ const Skills = () => {
     </>
   );
 };
-
 
 export default AppWrap(
   MotionWrap(Skills, 'app__skills'),
