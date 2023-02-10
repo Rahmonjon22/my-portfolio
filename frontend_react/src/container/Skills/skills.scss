@@ -41,6 +41,7 @@
 
   transition: all 0.3s ease-in-out;
 
+
   div {
     width: 90px;
     height: 90px;
@@ -52,9 +53,13 @@
       height: 50%;
     }
 
-    &:hover {
-      box-shadow: 0 0 25px #fef4f5;
+
+    &:hover{
+      background-color: #fef4f5;
+      transition: box-shadow 0.3s ease-in-out;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     }
+
 
     @media screen and (min-width: 2000px) {
       width: 150px;
@@ -66,6 +71,8 @@
       height: 70px;
     }
   }
+
+
 
   p {
     font-weight: 500;
