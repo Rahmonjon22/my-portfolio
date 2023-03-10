@@ -59,7 +59,24 @@ const Footer = () => {
           </a>
         </div>
       </div>
-      {!isFormSubmitted ? (
+
+      <form className="app__footer-form app__flex" action="https://formsubmit.co/rahmonjon2@yahoo.com" method="POST">
+      <div className="app__flex">
+          <input   className="p-text" type="text" name="name"     placeholder="Your Name" required />
+      </div>
+      <div className="app__flex">
+         <input    className="p-text" type="email" name="email"  placeholder="Your Email" required />
+      </div>
+      <div>
+      <input type="text" name="textarea"   className="p-text textarea"
+              placeholder="Your Message" required/>
+      </div>
+    
+     <button className="p-text" type="submit">Send</button>
+</form>
+
+
+      {/* {!isFormSubmitted ? (
         <div className="app__footer-form app__flex">
           <div className="app__flex">
             <input
@@ -69,6 +86,7 @@ const Footer = () => {
               name="name"
               value={username}
               onChange={handleChangeInput}
+              required
             />
           </div>
           <div className="app__flex">
@@ -79,6 +97,7 @@ const Footer = () => {
               name="email"
               value={email}
               onChange={handleChangeInput}
+              required
             />
           </div>
           <div>
@@ -88,6 +107,7 @@ const Footer = () => {
               value={message}
               name="message"
               onChange={handleChangeInput}
+              required
             />
           </div>
           <button type="button" className="p-text" onClick={handleSubmit}>
@@ -98,7 +118,8 @@ const Footer = () => {
         <div>
           <h3 className="head-text">Thank you for getting in touch </h3>
         </div>
-      )}
+      )} */}
+
     </>
   );
 };
