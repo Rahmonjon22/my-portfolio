@@ -59,22 +59,46 @@ const Footer = () => {
           </a>
         </div>
       </div>
+        <form
+          className="app__footer-form app__flex"
+          action="https://formsubmit.co/rahmonjon2@yahoo.com"
+          method="POST"
+        >
+          <div className="app__flex">
+            <input
+            
+              className="p-text"
+              type="text"
+              name="name"
+              placeholder="Your Name"
+              required
+            />
+          </div>
+          <div className="app__flex">
+            <input
+            
+              className="p-text"
+              type="email"
+              name="email"
+              placeholder="Your Email"
+              required
+            />
+          </div>
+          <div className="app__flex">
+            <textarea
+              type="text"
+              name="_subject"
+              className="p-text textarea"
+              placeholder="Your Message"
+              required
+            />
+          </div>
 
-      <form className="app__footer-form app__flex" action="https://formsubmit.co/rahmonjon2@yahoo.com" method="POST">
-      <div className="app__flex">
-          <input   className="p-text" type="text" name="name"     placeholder="Your Name" required />
-      </div>
-      <div className="app__flex">
-         <input    className="p-text" type="email" name="email"  placeholder="Your Email" required />
-      </div>
-      <div>
-      <input type="text" name="textarea"   className="p-text textarea"
-              placeholder="Your Message" required/>
-      </div>
-    
-     <button className="p-text" type="submit">Send</button>
-</form>
-
+          <button type="submit" className="p-text">
+            {!loading ? "Send Message" : "Sending..."}
+          </button>
+        </form>
+   
 
       {/* {!isFormSubmitted ? (
         <div className="app__footer-form app__flex">
@@ -119,7 +143,6 @@ const Footer = () => {
           <h3 className="head-text">Thank you for getting in touch </h3>
         </div>
       )} */}
-
     </>
   );
 };
